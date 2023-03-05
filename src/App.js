@@ -4,17 +4,21 @@ import './App.css';
 
 function App() {
   const [prepTime, setPrepTime] = useState("00:00");
+  const [workTime, setWorkTime] = useState("00:00");
 
   const onChange = (event) => {
-    setPrepTime(event.target.prepTime);
+    const setTime = eval(event.target.id);
+
+    setTime(event.target.value);
   };
 
   const onBlur = (event) => {
     const value = event.target.value;
     const seconds = Math.max(0, getSecondsFromMMSS(value));
+    const setTime = eval(event.target.id);
 
     const time = toMMSS(seconds);
-    setPrepTime(time);
+    setTime(time);
   };
 
   const getSecondsFromMMSS = (value) => {
@@ -51,9 +55,12 @@ function App() {
       <h1 className="App-header"> HIT timer </h1>
       <form>
         <p>Prep</p>
-        <input type="text" name="prep-time-minutes" onChange={onChange} onBlur={onBlur} value={prepTime}></input>
+        <input type="text" name="prep-time-minutes" id='setPrepTime' onChange={onChange} onBlur={onBlur} value={prepTime}></input>
       </form>
-      <p>Work</p>
+      <form>
+        <p>Work</p>
+        <input type="text" name="work-time-minutes" id='setWorkTime' onChange={onChange} onBlur={onBlur} value={workTime}></input>
+      </form>
       <p>Rest</p>
       <p>Rounds</p>
       <p>Cool Down</p>
