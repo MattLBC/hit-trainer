@@ -1,4 +1,14 @@
-function Plan({ changeTime, blurTime, prepTime, workTime, restTime, changeRounds, blurRounds, rounds, cooldown}) {
+function Plan({
+  changeTime,
+  blurTime,
+  prepTime,
+  workTime,
+  restTime,
+  changeRounds,
+  blurRounds,
+  rounds,
+  cooldown,
+}) {
   return (
     <>
       <form>
