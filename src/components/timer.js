@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Timer() {
-  let time = 30;
+  let time = 40;
 
   function countdown() {
     if (time === 0) {
