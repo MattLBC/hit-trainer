@@ -18,8 +18,18 @@ function App() {
   );
   const [start, setStart] = useState(false);
 
+  function setTimeSwitch(timeToChange) {
+    switch (timeToChange) {
+        case "setPrepTime": return setPrepTime;
+        case "setWorkTime": return setWorkTime;
+        case "setRestTime": return setRestTime;
+        case "setCooldown": return setCooldown;
+        default: return;
+      }   
+}
+
   const changeTime = (event) => {
-    const setTime = eval(event.target.id);
+    const setTime = setTimeSwitch(event.target.id);
     setTime(event.target.value);
   };
 
@@ -36,7 +46,7 @@ function App() {
   const blurTime = (event) => {
     const value = event.target.value;
     const seconds = Math.max(0, getSecondsFromMMSS(value));
-    const setTime = eval(event.target.id);
+    const setTime = setTimeSwitch(event.target.id);
 
     const time = toMMSS(seconds);
     setTime(time);
@@ -44,14 +54,15 @@ function App() {
 
   function startButton() {
     setStart(!start);
-    console.log(start);
   }
 
   return (
     <div className="App">
       <img src={stopwatch} className="App-logo" alt="logo" />
       <h1 className="App-header"> HIT timer </h1>
-      {start ? <Timer /> : (
+      {start ? (
+        <Timer />
+      ) : (
         <Plan
           changeTime={changeTime}
           blurTime={blurTime}
@@ -62,11 +73,10 @@ function App() {
           blurRounds={blurRounds}
           rounds={rounds}
           cooldown={cooldown}
+          totalTime={totalTime}
         />
       )}
-      <p>Total</p>
-      <p>{totalTime}</p>
-      <button onClick={startButton}>Start</button>
+      <button onClick={startButton}>{start ? "Stop" : "Start"}</button>
     </div>
   );
 }

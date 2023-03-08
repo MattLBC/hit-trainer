@@ -8,6 +8,7 @@ function Plan({
   blurRounds,
   rounds,
   cooldown,
+  totalTime,
 }) {
   return (
     <>
@@ -65,6 +66,8 @@ function Plan({
           value={cooldown}
         ></input>
       </form>
+      <p>Total</p>
+      <p>{totalTime}</p>
     </>
   );
 }
