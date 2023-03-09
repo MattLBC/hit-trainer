@@ -20,13 +20,18 @@ function App() {
 
   function setTimeSwitch(timeToChange) {
     switch (timeToChange) {
-        case "setPrepTime": return setPrepTime;
-        case "setWorkTime": return setWorkTime;
-        case "setRestTime": return setRestTime;
-        case "setCooldown": return setCooldown;
-        default: return;
-      }   
-}
+      case "setPrepTime":
+        return setPrepTime;
+      case "setWorkTime":
+        return setWorkTime;
+      case "setRestTime":
+        return setRestTime;
+      case "setCooldown":
+        return setCooldown;
+      default:
+        return;
+    }
+  }
 
   const changeTime = (event) => {
     const setTime = setTimeSwitch(event.target.id);
@@ -61,7 +66,14 @@ function App() {
       <img src={stopwatch} className="App-logo" alt="logo" />
       <h1 className="App-header"> HIT timer </h1>
       {start ? (
-        <Timer />
+        <Timer
+          prepTime={prepTime}
+          workTime={workTime}
+          restTime={restTime}
+          rounds={rounds}
+          cooldown={cooldown}
+          totalTime={totalTime}
+        />
       ) : (
         <Plan
           changeTime={changeTime}
