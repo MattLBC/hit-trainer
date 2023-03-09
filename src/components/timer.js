@@ -49,6 +49,12 @@ function Timer({ prepTime, workTime, restTime, rounds, cooldown, totalTime }) {
     return () => clearInterval(interval);
   }, [time]);
 
+  if (arrayPosition === workoutArray.length){
+    return(
+        <h1>You did it!</h1>
+    )
+  }
+
   return (
     <>
       <p>{phase}</p>
