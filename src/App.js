@@ -4,6 +4,7 @@ import "./App.css";
 import { getSecondsFromMMSS, toMMSS } from "./helper-functions/time-convert";
 import Plan from "./components/plan";
 import Timer from "./components/timer";
+import CompleteModal from "./components/complete-modal";
 
 function App() {
   const [prepTime, setPrepTime] = useState("00:00");
@@ -17,6 +18,7 @@ function App() {
       (getSecondsFromMMSS(workTime) + getSecondsFromMMSS(restTime)) * rounds
   );
   const [start, setStart] = useState(false);
+  const [showCompleteModal, setShowCompleteModal] = useState(false);
 
   function setTimeSwitch(timeToChange) {
     switch (timeToChange) {
@@ -73,6 +75,9 @@ function App() {
           rounds={rounds}
           cooldown={cooldown}
           totalTime={totalTime}
+          setStart={setStart}
+          start={start}
+          setShowCompleteModal={setShowCompleteModal}
         />
       ) : (
         <Plan
@@ -89,6 +94,10 @@ function App() {
         />
       )}
       <button onClick={startButton}>{start ? "Stop" : "Start"}</button>
+      <CompleteModal
+        show={showCompleteModal}
+        onHide={() => setShowCompleteModal(false)}
+      />
     </div>
   );
 }

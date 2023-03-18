@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import { getSecondsFromMMSS, toMMSS } from "../helper-functions/time-convert";
 
-function Timer({ prepTime, workTime, restTime, rounds, cooldown, totalTime }) {
+function Timer({
+  prepTime,
+  workTime,
+  restTime,
+  rounds,
+  cooldown,
+  totalTime,
+  setStart,
+  start,
+  setShowCompleteModal
+}) {
   const [time, setTime] = useState(getSecondsFromMMSS(totalTime));
   const [phase, setPhase] = useState("Get ready");
   const [phaseTime, setPhaseTime] = useState(getSecondsFromMMSS(prepTime));
@@ -49,10 +59,9 @@ function Timer({ prepTime, workTime, restTime, rounds, cooldown, totalTime }) {
     return () => clearInterval(interval);
   }, [time]);
 
-  if (arrayPosition === workoutArray.length){
-    return(
-        <h1>You did it!</h1>
-    )
+  if (arrayPosition === workoutArray.length) {
+    setShowCompleteModal(true)
+    setStart(!start)
   }
 
   return (
