@@ -11,7 +11,7 @@ function CompleteModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Workout Complete!
+          Workout Completed!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
