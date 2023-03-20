@@ -1,10 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import stopwatch from "./logos/stopwatch-1.png";
 import "./App.css";
 import { getSecondsFromMMSS, toMMSS } from "./helper-functions/time-convert";
 import Plan from "./components/plan";
 import Timer from "./components/timer";
-import CompleteModal from "./components/complete-modal";
 
 function App() {
   const [prepTime, setPrepTime] = useState("00:00");
@@ -94,10 +93,6 @@ function App() {
         />
       )}
       <button onClick={startButton}>{start ? "Stop" : "Start"}</button>
-      <CompleteModal
-        show={showCompleteModal}
-        onHide={() => setShowCompleteModal(false)}
-      />
     </div>
   );
 }
